@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Covid-19</title>
+    </head>
+    <body>
+        <h1>
+            Covid-19 numbers in the
+            <div id="land"></div>
+        </h1>
+        <b>New deaths:</b>
+            <div id ="nieuw_doden"></div>
+       <b>Total deaths:</b> 
+            <div id="doden"></div>
+       <b>Total confirmed:</b> 
+            <div id="totaal_besmet"></div>
+        <b>Total recovered:</b>
+            <div id="hersteld"></div>
+           <b> Datum:</b>
+            <div id="datum"></div>
+
+        <script lang="text/javascript">
+            fetch('https://api.covid19api.com/summary')
+            .then(function(resp) {return resp.json()}) //convert data to json
+            .then(function(data) {
+                console.log(data);
+                console.log(data.Countries[120].Country);
+                console.log(data.Countries[120].TotalDeaths);
+                document.getElementById("land").innerHTML = (data.Countries[120].Country);
+                document.getElementById("doden").innerHTML = (data.Countries[120].TotalDeaths);
+                document.getElementById("datum").innerHTML = (data.Countries[120].Date);
+                document.getElementById("nieuw_doden").innerHTML = (data.Countries[120].NewDeaths);
+                document.getElementById("totaal_besmet").innerHTML = (data.Countries[120].TotalConfirmed);
+                document.getElementById("hersteld").innerHTML = (data.Countries[120].TotalRecovered);
+            })
+            .catch(function(){ // catch any errors
+            });
+        </script>
+    </body>
+</html>
