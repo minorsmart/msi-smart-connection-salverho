@@ -986,7 +986,7 @@ Daarnaast zijn er verschillende geautomatiseerde productietechnieken die steeds 
                 <h1>Portfolio smart connection</h1>
             </header>
             <p>
-                Voor dit onderdeel van de minor heb ik kennis gemaakt met het bouwen van een eigen website. In de eerste weken heb ik kennis gemaakt met html en CSS. Bij html gaat het om de een standaard opmaaktaal voor documenten, voornamelijk bedoeld voor webpagina's op het world wide web. De tekst en plaatjes op mijn site zijn bijna allemaal weergeven door het schrijven van een code middels html. Enkel html maakt de website niet mooi en hierdoor heb ik CSS gebruikt om de opbouw mooi te maken. Denk hierbij aan de tekst in het midden laten uitkomen, achtergrondkleur, homepagina, etc. Vervolgens hebben wij ook geleerd om met javascript te werken op een website. Hierbij heb ik bijvoorbeeld het actuele weer van tilburg op kunnen halen of  het aantal coronadoden in Nederland. Deze functies zijn onderstaand weergeven. 
+                Voor dit onderdeel van de minor heb ik kennis gemaakt met het bouwen van een eigen website. In de eerste weken heb ik kennis gemaakt met html en CSS. Bij html gaat het om de een standaard opmaaktaal voor documenten, voornamelijk bedoeld voor webpagina's op het world wide web. De tekst en plaatjes op mijn site zijn bijna allemaal weergeven door het schrijven van een code middels html. Enkel html maakt de website niet mooi en hierdoor heb ik CSS gebruikt om de opbouw mooi te maken. Denk hierbij aan de tekst in het midden laten uitkomen, achtergrondkleur, homepagina, etc. Vervolgens hebben wij ook geleerd om met javascript te werken op een website. Hierbij heb ik bijvoorbeeld het actuele weer van tilburg op kunnen halen of  het aantal coronadoden in Nepal. Deze functies zijn onderstaand weergeven. 
             </p>
             <head>
                 <meta charset="utf-8">
@@ -1025,6 +1025,45 @@ Daarnaast zijn er verschillende geautomatiseerde productietechnieken die steeds 
                     .catch(function(){ // catch any errors
                     });
                 </script>
+
+<head>
+    <meta charset="utf-8">
+    <title>Current Weather</title>
+    </head>
+    <body>
+        <div id="weather">
+         <div id="description"></div>
+         <h1 id="temp"></h1>
+         <div id="location"></div>
+        </div>
+    <script lang="text/javascript">
+    // future javascript
+    function weatherBalloon( cityID ) {
+    var key = '06df06a19abdcf402b491aafea55b34f';
+    fetch('https://api.openweathermap.org/data/2.5/weather?id=' + cityID+ '&appid=' +key)
+    .then(function(resp) { return resp.json() }) // Convert data to j
+    .then(function(data) {
+        console.log (data);
+        
+    drawWeather(data); // Call drawWeather
+    })
+    .catch(function() {
+    // catch any errors
+    });
+    }
+    
+    window.onload = function() {
+     weatherBalloon( 2746300 );
+    }
+    function drawWeather( d ) {
+        var celcius = Math.round(parseFloat(d.main.temp)-273.15);
+        var fahrenheit = Math.round(((parseFloat(d.main.temp)-273.15)*1.8)+32);
+    
+        document.getElementById('description').innerHTML = d.weather[0].description;
+        document.getElementById('temp').innerHTML = celcius + '&deg;';
+        document.getElementById('location').innerHTML = d.name;
+    }
+    </script>
 
 
 
