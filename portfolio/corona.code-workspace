@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"name": "Smart technology Sietse",
+			"path": "../../../Documents/PlatformIO/Projects/Smart technology Sietse"
+		},
+		{
+			"path": "../../../SMART industrie/smart connection/js-basics"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "msi-smart-connection-salverho"
+	}
+}
